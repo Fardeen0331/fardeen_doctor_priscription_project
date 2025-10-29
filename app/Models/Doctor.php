@@ -29,7 +29,8 @@ class Doctor extends Model
         "clinic_hospital_name",
         "consultaion_fee",
         "availability",
-        "perception_access"
+        "perception_access",
+        "medicines"
     ];
 
     protected $keyType = 'string';

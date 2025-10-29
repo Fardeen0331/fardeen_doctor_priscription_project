@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('consultaion_fee')->nullable();
             $table->json('availability')->nullable();
             $table->string('perception_access')->default(0);
+            $table->json('medicines')->nullable();
             $table->tinyInteger("is_delete")->default(0);
             $table->timestamps();
         });

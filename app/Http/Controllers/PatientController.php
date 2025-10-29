@@ -7,6 +7,11 @@ use App\Models\Patient;
 
 class PatientController extends Controller
 {
+    // view page 
+    public function addPatient()
+    {
+        return view('patient.add');
+    }
     // Create Patient view
     public function createGstBill(Request $request)
     {
