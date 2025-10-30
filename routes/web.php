@@ -14,12 +14,13 @@ Route::get('/', function(){
 
 // patient
 Route::get('/add-patient', [PatientController::class, 'addPatient'])->name('add-patient');
+Route::post('/create-patient', [PatientController::class, 'createPatient'])->name('create-patient');
 
 // doctor
-Route::get('/add-doctor', [DoctorController::class, 'addDoctor'])->name('add-doctor');
+Route::post('/add-doctor', [DoctorController::class, 'addDoctor'])->name('add-doctor');
 
 // medicine
-Route::get('/add-medicine', [MedicineController::class, 'addMedicine'])->name('add-medicine');
+Route::post('/add-medicine', [MedicineController::class, 'addMedicine'])->name('add-medicine');
 
 
 require __DIR__.'/settings.php';

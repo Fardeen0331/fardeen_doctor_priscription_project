@@ -9,26 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
     public function up(): void
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('full_name');
             $table->string('age');
-            $table->string('gender', ['male', 'female', 'transgender'])->nullable();
+            $table->enum('gender', ['male', 'female', 'transgender'])->nullable();
             $table->string('phone_no')->nullable();
-            $table->string('email')->nullable();
-            $table->string('date_of_birth')->nullable();
+            $table->date('date');
+            $table->string('time');
             $table->string('address')->nullable();
-            $table->string('cnic')->nullable();
-            $table->string('specialization')->nullable();
-            $table->string('qualification')->nullable();
-            $table->string('pmdc_registrtion_no')->nullable();
-            $table->string('clinic_hospital_name')->nullable();
-            $table->string('consultaion_fee')->nullable();
-            $table->json('availability')->nullable();
-            $table->string('perception_access')->default(0);
-            $table->json('medicines')->nullable();
+            $table->string('occupation')->nullable();
+            $table->string('diet')->nullable();
+            $table->string('addiction')->nullable();
+            $table->string('mental_health')->nullable();
+            $table->string('lab_test')->nullable();
             $table->tinyInteger("is_delete")->default(0);
             $table->timestamps();
         });
@@ -39,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('patients');
     }
 };

@@ -21,11 +21,11 @@ class DoctorController extends Controller
             'full_name'             => 'required|string|max:255',
             'age'                   => 'required|integer|min:25|max:100',
             'gender'                => 'required|in:Male,Female,Other',
-            'phone_no'              => 'required|string|min:10|max:15|unique:doctors,phone_no',
+            'phone_no'              => 'required|string|min:10|max:15',
             'email'                 => 'required|email|unique:doctors,email|max:255',
             'date_of_birth'         => 'required|date|before_or_equal:today',
-            'address'               => 'nullable|string|max:500',
-            'cnic'                  => 'nullable|string|size:13|unique:doctors,cnic',
+            'address'               => 'required|string|max:500',
+            'cnic'                  => 'required|string|size:13|unique:doctors,cnic',
 
             // Professional Info
             'specialization'        => 'required|string|max:100',

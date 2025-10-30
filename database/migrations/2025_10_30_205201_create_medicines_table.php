@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('patients', function (Blueprint $table) {
+        Schema::create('medicines', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('generic_name')->unique();
             $table->string('brand_name')->nullable();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('medicines');
     }
 };

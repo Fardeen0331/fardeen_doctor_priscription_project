@@ -13,16 +13,16 @@ class PatientController extends Controller
         return view('patient.add');
     }
     // Create Patient view
-    public function createGstBill(Request $request)
+    public function createPatient(Request $request)
     {
         $request->validate([
             // Basic Info
-            'name'          => 'required|string|max:255',
+            'full_name'     => 'required|string|max:255',
             'age'           => 'required|integer|min:1|max:120',
             'gender'        => 'required|in:Male,Female,Other',
-            'phone_no'      => 'required|string|min:10|max:15|unique:patients,phone_no',
-            'date'      => 'required|date|before_or_equal:today',
-            'time'      => 'required|string|min:10|max:30|',
+            'phone_no'      => 'required|string|min:10|max:15',
+            'date'          => 'required|date',
+            'time'          => 'required|string|min:2|max:30',
 
             // Lifestyle & Context
             'address'       => 'nullable|string|max:500',
@@ -34,7 +34,12 @@ class PatientController extends Controller
             'mental_health' => 'nullable|string|max:500',
             'lab_test'      => 'nullable|string|max:500',
         ]);
+        $param = $request->all();
 
-        return redirect()->back()->with('success', 'Patient record successfully saved!');
+
+        unset($param['_token']);
+        Patient::create($param);
+
+        return redirect()->back()->withStatus("Patient Data Saved");
     }
 }
